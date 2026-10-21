@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhojPakistan.pk – Apno Ki Talaash</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-search-location"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">KhojPakistan.pk</span>
+                    <span class="logo-sub">Apno Ki Talaash</span>
+                </div>
+            </a>
+
+            <nav class="nav" id="nav">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="#search" class="nav-link">Search Missing Persons</a>
+                <a href="#services" class="nav-link">Unidentified Bodies</a>
+                <a href="#services" class="nav-link">Missing Kids</a>
+                <a href="#services" class="nav-link">Found Persons</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <a href="#donate" class="btn btn-donate">
+                <i class="fas fa-heart"></i> Donate Now
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <h1>Help Us Reunite Families<br>Across Pakistan</h1>
+                <p class="hero-desc">
+                    A national humanitarian portal to search for missing persons, identify unidentified bodies,
+                    support missing children, and share found individuals. Every lead brings someone home.
+                </p>
+
+                <div class="search-box" id="search">
+                    <div class="search-input-wrap">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search by name, CNIC, or case description...">
+                    </div>
+                    <div class="city-select-wrap">
+                        <select id="citySelect">
+                            <option value="">City: All</option>
+                            <option value="Karachi">City: Karachi</option>
+                            <option value="Lahore">City: Lahore</option>
+                            <option value="Islamabad">City: Islamabad</option>
+                            <option value="Peshawar">City: Peshawar</option>
+                            <option value="Quetta">City: Quetta</option>
+                            <option value="Multan">City: Multan</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-search" onclick="performSearch()">
+                        <i class="fas fa-search"></i> Search Now
+                    </button>
+                </div>
+
+                <div class="city-chips">
+                    <button class="chip" onclick="filterByCity('Karachi')"><i class="fas fa-map-marker-alt"></i> Karachi</button>
+                    <button class="chip" onclick="filterByCity('Lahore')"><i class="fas fa-map-marker-alt"></i> Lahore</button>
+                    <button class="chip" onclick="filterByCity('Islamabad')"><i class="fas fa-map-marker-alt"></i> Islamabad</button>
+                    <button class="chip" onclick="filterByCity('Peshawar')"><i class="fas fa-map-marker-alt"></i> Peshawar</button>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-cards">
+                    <div class="hero-card card-1">
+                        <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=200&h=200&fit=crop&crop=face" alt="Elderly man">
+                    </div>
+                    <div class="hero-card card-2">
+                        <div class="question-avatar">
+                            <i class="fas fa-question"></i>
+                        </div>
+                    </div>
+                    <div class="hero-card card-3">
+                        <div class="family-silhouette">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="reunited-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>3,200+ Families Reunited</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICES SECTION ========== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">OUR SERVICES</p>
+                <h2>How KhojPakistan.pk Helps</h2>
+                <p class="section-sub">Four ways to support the search</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Search Missing Persons</h3>
+                    <p>Report and search missing individuals across Pakistan with verified details and real-time updates.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Unidentified Bodies</h3>
+                    <p>Browse unidentified bodies to help with identification and connect with authorities.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Missing Kids</h3>
+                    <p>Dedicated section for missing children with urgent alerts and photo details.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Found Persons</h3>
+                    <p>View and report found individuals to reunite them with their families.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RECENT CASES ========== -->
+    <section class="recent-cases">
+        <div class="container">
+            <div class="section-header-row">
+                <h2>Recent Cases</h2>
+                <a href="#" class="view-all">View All Cases <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="cases-grid" id="casesGrid">
+                {% for case in cases %}
+                <div class="case-card {% if case.status == 'Found' %}found-card{% endif %}">
+                    <div class="case-img-wrap">
+                        <img src="{{ case.image }}" alt="{{ case.name }}">
+                        <span class="case-badge {% if case.status == 'Missing' %}missing{% elif case.status == 'Missing Kid' %}missing-kid{% else %}found{% endif %}">
+                            {{ case.status }}
+                        </span>
+                    </div>
+                    <div class="case-body">
+                        <h3>{{ case.name }}, {{ case.age }}</h3>
+                        <p class="case-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            {% if case.status == 'Found' %}Found: {% else %}Last seen: {% endif %}{{ case.location }}
+                        </p>
+                        <p class="case-meta">
+                            <i class="far fa-calendar"></i>
+                            {% if case.status == 'Found' %}Found on: {% else %}Missing since: {% endif %}{{ case.date }}
+                        </p>
+                        {% if case.status != 'Found' %}
+                        <div class="case-tags">
+                            <span>Height {{ case.height }}</span>
+                            <span>{{ case.clothing }}</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="showCaseDetails({{ case.id }})">View Details</button>
+                        {% else %}
+                        <button class="btn btn-primary full-width" onclick="contactAboutCase({{ case.id }})">Contact Now</button>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS ========== -->
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>12,450+</h3>
+                <p>Across all provinces</p>
+            </div>
+            <div class="stat-item">
+                <h3>3,200+</h3>
+                <p>Reunited Families</p>
+            </div>
+            <div class="stat-item">
+                <h3>120+</h3>
+                <p>NGO Partners & Volunteers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT / HOW IT WORKS ========== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p class="section-sub">Simple steps to help reunite families</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h3>Report a Case</h3>
+                    <p>Submit details of a missing or found person with photos and last known location.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h3>We Verify</h3>
+                    <p>Our team and partner NGOs verify the information for accuracy and safety.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h3>Public Visibility</h3>
+                    <p>Cases appear on the portal so the whole community can help search.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <h3>Reunion</h3>
+                    <p>When a match is found, we connect families with authorities and support the reunion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo footer-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">KhojPakistan.pk</span>
+                        <span class="logo-sub">Apno Ki Talaash</span>
+                    </div>
+                </div>
+                <p>A humanitarian initiative dedicated to reuniting families and helping communities across Pakistan.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">How It Works</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Guidelines</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Media Kit</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-envelope"></i> Email: support@khojpakistan.pk</li>
+                    <li><i class="fas fa-phone"></i> Helpline: 0800-12345 (24/7)</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Islamabad, Pakistan</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>© 2024 KhojPakistan.pk — All rights reserved. Built for humanity.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for case details -->
+    <div class="modal" id="caseModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
